@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dating App</title>
+</head>
+<body>
+  <h1>Dating App</h1>
+
+  <!-- Create Profile Section -->
+  <div>
+    <h2>Create Profile</h2>
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="bio" placeholder="Bio">
+    <input type="text" id="interests" placeholder="Interests (comma-separated)">
+    <input type="text" id="nftUrl" placeholder="NFT Profile URL">
+    <button onclick="createProfile()">Create Profile</button>
+  </div>
+
+  <!-- Find Matches Section -->
+  <div>
+    <h2>Find Matches</h2>
+    <button onclick="findMatches()">Find Matches</button>
+    <ul id="matches"></ul>
+  </div>
+
+  <script>
+    const CANISTER_URL = "https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp1.io/?id=ts425-saaaa-aaaab-qbksq-cai";
+
+    // Create Profile
+    function createProfile() {
+      const name = document.getElementById("name").value;
+      const bio = document.getElementById("bio").value;
+      const interests = document.getElementById("interests").value.split(",");
+      const nftUrl = document.getElementById("nftUrl").value;
+
+      alert(`Profile created: 
+        Name: ${name}, 
+        Bio: ${bio}, 
+        Interests: ${interests}, 
+        NFT URL: ${nftUrl}`);
+    }
+
+    // Find Matches
+    function findMatches() {
+     
+      const mockMatches = [
+        { name: "Yaren", bio: "Loves dogs", interests: ["movies", "sports"] },
+        { name: "John ", bio: "Enjoys hiking", interests: ["traveling", "sports"] },
+      ];
+
+      const matchList = document.getElementById("matches");
+      matchList.innerHTML = ""; 
+      mockMatches.forEach(match => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${match.name} - ${match.bio}`;
+        matchList.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+</html>
